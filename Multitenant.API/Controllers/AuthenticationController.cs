@@ -21,6 +21,7 @@ namespace Multitenant.API.Controllers
         {
             _config = config;
         }
+
         [HttpPost("Authenticate")]
         [AllowAnonymous]
         public IActionResult Authenticate([FromBody] UserLogin userLogin)
@@ -35,6 +36,7 @@ namespace Multitenant.API.Controllers
 
             return NotFound("User not found");
         }
+
         private string Generate(UserModel user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
